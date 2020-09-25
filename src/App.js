@@ -90,7 +90,7 @@ export default class App extends React.Component {
                         <Card.Title>No Vacuum</Card.Title>
                         <Card.Subtitle className="mb-2 text-muted">Assuming a market value of 3$/Gal</Card.Subtitle>
 
-                        Sap Yield ${yield0}<br />
+                        Sap Yield {yield0} gallons<br />
                         Market Value ${val0.toFixed(2)}
                       </Card>
                     </Col>
@@ -101,6 +101,7 @@ export default class App extends React.Component {
                       <Card>
                         <Card.Header>Vacuum 15"</Card.Header>
                         <Table striped bordered hover>
+                          <tr><td>Sap Yield</td><td>{yield15}</td></tr>
                           <tr><td>CFM req'd</td><td>{cfm15}</td></tr>
                           <tr><td>Market Value</td><td>${val15.toFixed(2)}</td></tr>
                           <tr><td>Pump costs</td><td> ${cost15.toFixed(2)}</td></tr>
@@ -115,6 +116,7 @@ export default class App extends React.Component {
                       <Card>
                         <Card.Header>Vacuum 20"</Card.Header>
                         <Table striped bordered hover>
+                        <tr><td>Sap Yield</td><td>{yield20}</td></tr>
                           <tr><td>CFM req'd</td><td>{cfm20.toFixed(1)}</td></tr>
                           <tr><td>Market Value</td><td>${val20.toFixed(2)}</td></tr>
                           <tr><td>Pump costs</td><td>${cost20.toFixed(2)}</td></tr>
@@ -130,6 +132,8 @@ export default class App extends React.Component {
                       <Card>
                         <Card.Header>Vacuum 25"</Card.Header>
                         <Table striped bordered hover>
+                        <tr><td>Sap Yield</td><td>{yield25}</td></tr>
+                     
                           <tr><td>CFM req'd</td><td>{cfm25.toFixed(1)}</td></tr>
                           <tr><td>Market Value</td><td>${val25.toFixed(2)}</td></tr>
                           <tr><td>Pump costs</td><td>${cost25.toFixed(2)}</td></tr>
