@@ -53,12 +53,12 @@ export default class App extends React.Component {
 
     return (
       <div className="App">
-        <Container style={{ marginTop: '5px' }}>
+        <Container style={{ width:"100%", marginTop: '5px' }}>
           <Row>
             <Col md={3}>
               <img src='/img/sap_collection.png' alt="information about rule of 86" />
             </Col>
-            <Col md={8}>
+            <Col md={8} lg={9}>
               <Card>
                 <Card.Header>Yield Calculator - Vacuum costs</Card.Header>
                 <Card.Body>
