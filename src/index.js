@@ -1,17 +1,24 @@
 import React from 'react';
+import './stylesheets/index.css';
+
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
 import * as serviceWorker from './serviceWorker';
+// You can choose your kind of history here (e.g. browserHistory)
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+
+import Vacuum from './pages/Vacuum';
+import Welcome from './pages/Welcome';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <Router>
+  <Switch>
+    <Route exact path="/" component={Welcome} />
+    <Route exact path="/calc/vacuum" component={Vacuum} />
+
+  </Switch>
+  </Router>,
   document.getElementById('root')
 );
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+
+serviceWorker.register();

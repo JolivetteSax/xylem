@@ -1,0 +1,38 @@
+.hero {
+  background-image: url('/img/hero_image.png');
+  height:500px;
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+
+}
+
+.hero-inner {
+  content:"";
+  width:100%;
+  height:500px; 
+  float:left;
+  background-color:rgba(255,255,255, .7);
+}
+
+.hero-inner aside {
+  color:black;
+  float: left;
+  padding: 4%;
+  margin-left:20%;
+  margin-top:125px;
+  height:300px;
+  line-height:24px;
+  width:40%;
+}
+
+.hero-text H2{
+  font-family: Roboto, sans-serif;
+}
+
+.hero-text {
+
+  font-size: 22px;
+  font-weight:400;
+
+}
