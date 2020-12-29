@@ -15,7 +15,7 @@ $ npm -v
 $ npm install && npm start
 ```
 
-# Deplpoy
+# Deploy
 
 No special knowledge is needed to host this application, a completed build can be hosted as a static webpage. 
 

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import Header from '../components/generic/Header';
 import '../stylesheets/Welcome.css';
+
 import { Container, Row, Col, Card } from 'react-bootstrap';
 import {Link} from 'react-router-dom';
 export default class Welcome extends Component {
@@ -41,7 +42,9 @@ export default class Welcome extends Component {
                 <Card>
                   <Card.Header>Cost Calculations</Card.Header>
                   <Card.Body>
-                    <Link to='/calc/vacuum'>Vacuum Pump</Link>
+                  <Link to='/calc/vacuum'>Vacuum Pump</Link>
+                  <br/>
+                  <Link to='/calc/tubing'>Tubing Costs</Link>
                   </Card.Body>
                 </Card>
               </Col>

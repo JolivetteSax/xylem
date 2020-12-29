@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Container, Row, Col, Card, Form, Table } from 'react-bootstrap';
 import Header from '../components/generic/Header';
 
-export default class App extends React.Component {
+export default class Vacuum extends React.Component {
   constructor(props) {
     super(props);
     this.handleTaps = this.handleTaps.bind(this);
