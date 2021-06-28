@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import {Badge} from 'react-bootstrap';
 import '../../stylesheets/App.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
 export default class Header extends Component {
 
   render() {

@@ -9,6 +9,7 @@ import Vacuum from './pages/Vacuum';
 import Welcome from './pages/Welcome';
 import Tubing from './pages/Tubing';
 import SapPricing from './pages/SapPricing';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 ReactDOM.render(
   <Router>
