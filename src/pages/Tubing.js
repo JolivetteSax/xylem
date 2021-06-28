@@ -12,17 +12,11 @@ export default class Tubing extends React.Component {
     this.state = {
       trees: 120,
       lats: 12,
-
-      avgTreeDistance: 19.1,
-      aveLen_lateral_line: 219.1,
-      latLinesPerAcre: 10.0,
-      mainLineLenPerAcre: 190.5,
-      lateralLineTotalLength: 2191.0,
-      wireTies: 127,
-      //Length of 5/16 lines end tree loop (3' each)	30.0
-      //Length of 5/16 in drop lines (30" each)	300.0
-      //Number of wire ties (one every 18")	127.0
-      //Length of side tie wire	41.0
+      spouts: true,
+      checkValve: true,
+      black: true,
+      saddlePrice: 2.95,
+      spoutPrice: .39,
     }
   }
   handleTrees(ev) {
@@ -34,8 +28,8 @@ export default class Tubing extends React.Component {
 
   render() {
     /* TODO move to state */
-    let treesPerAcre = 120; //B3= 120;
-    let treesPerLine = 12; //B4 = 12;
+    let treesPerAcre = this.state.trees; //B3= 120;
+    let treesPerLine = this.state.lats; //B4 = 12;
 
 
     const avgTreeDistance = Math.sqrt(43560 / treesPerAcre);
@@ -44,11 +38,17 @@ export default class Tubing extends React.Component {
     const mainLineLenPerAcre = latLinesPerAcre * avgTreeDistance; // B7 * B5 190.5,
     const lateralLineTotalLength = latLinesPerAcre * avgLenLateralLine; 	// B7 * B6 2191.0,
 
+
+    const spoutSubTot = this.state.spoutPrice * this.state.trees;
+
     /** 
-     * Wire ties
-    wireTies: 127,
-    
+Length of 5/16 lines end tree loop (3' each)	30.0
+Length of 5/16 in drop lines (30" each)	300.0
+Number of wire ties (one every 18")	127.0
+Length of side tie wire	41.0
+
     */
+   const totalCost = 466.69;
 
     return (
       <div>
@@ -65,7 +65,8 @@ export default class Tubing extends React.Component {
                   <Card.Body>
 
                     <Row>
-                      <Form >
+                      <Col>
+                      <Form style={{textAlign:'left'}}>
                         <Col>
                           <Form.Group controlId="formTapCount">
                             <Form.Label>Number of Trees per acre</Form.Label>
@@ -84,6 +85,13 @@ export default class Tubing extends React.Component {
                         </Col>
 
                       </Form>
+                      </Col>
+                      <Col>
+                      <Table striped bordered hover>
+                      <tr><td>Spouts: </td><td>{spoutSubTot.toFixed(2)}</td></tr>
+                      <tr><td>Total per acre: </td><td>{totalCost}</td></tr>
+                      </Table>
+                      </Col>
                     </Row>
 
 
@@ -95,7 +103,7 @@ export default class Tubing extends React.Component {
                     <Card>
                       <Card.Header>Tubing Calculations</Card.Header>
                       <Table striped bordered hover>
-                      <tr><td>avgTreeDistance</td><td>{avgTreeDistance.toFixed(2)}</td></tr>
+                      <tr><td>avgTreeDistance (ft)</td><td>{avgTreeDistance.toFixed(2)}</td></tr>
                       <tr><td>lateralLineTotalLength</td><td>{lateralLineTotalLength.toFixed(2)}</td></tr>
                       
                       </Table>

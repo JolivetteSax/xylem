@@ -8,12 +8,14 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Vacuum from './pages/Vacuum';
 import Welcome from './pages/Welcome';
 import Tubing from './pages/Tubing';
+import SapPricing from './pages/SapPricing';
 
 ReactDOM.render(
   <Router>
   <Switch>
     <Route exact path="/" component={Welcome} />
     <Route exact path="/calc/vacuum" component={Vacuum} />
+    <Route exact path="/calc/sapPricing" component={SapPricing} />
     <Route exact path="/calc/tubing" component={Tubing} />
   </Switch>
   </Router>,
