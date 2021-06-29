@@ -47,6 +47,10 @@ export default class Welcome extends Component {
                   <Link to='/calc/tubing'>Tubing Costs</Link>
                   <br/>
                   <Link to='/calc/sapPricing'>Sap Pricing</Link>
+                  <br/>
+                  <Link to='/calc/fuel'>Fuel Cost Analysis</Link>
+                  <br/>
+                  <Link to='/calc/productPricing'>Product Pricing</Link>
                   </Card.Body>
                 </Card>
               </Col>

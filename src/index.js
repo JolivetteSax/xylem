@@ -9,6 +9,9 @@ import Vacuum from './pages/Vacuum';
 import Welcome from './pages/Welcome';
 import Tubing from './pages/Tubing';
 import SapPricing from './pages/SapPricing';
+import FuelCosts from './pages/FuelCosts';
+import ProductPricing from './pages/ProductPricing';
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 ReactDOM.render(
@@ -18,6 +21,8 @@ ReactDOM.render(
     <Route exact path="/calc/vacuum" component={Vacuum} />
     <Route exact path="/calc/sapPricing" component={SapPricing} />
     <Route exact path="/calc/tubing" component={Tubing} />
+    <Route exact path="/calc/fuel" component={FuelCosts} />
+    <Route exact path="/calc/productPricing" component={ProductPricing} />
   </Switch>
   </Router>,
   document.getElementById('root')
