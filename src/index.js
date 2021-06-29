@@ -24,4 +24,4 @@ ReactDOM.render(
 );
 
 
-serviceWorker.register();
+//serviceWorker.register();
