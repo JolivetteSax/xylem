@@ -1,7 +1,10 @@
 import React from 'react';
 
 import ReactDOM from 'react-dom';
-import * as serviceWorker from './serviceWorker';
+
+//Taking this out to try to allow soft refreshes
+//import * as serviceWorker from './serviceWorker';
+
 // You can choose your kind of history here (e.g. browserHistory)
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 

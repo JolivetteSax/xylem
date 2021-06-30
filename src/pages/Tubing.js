@@ -130,7 +130,7 @@ export default class Tubing extends React.Component {
           <Container style={{ width: "100%", marginTop: '5px' }}>
             <Row>
               <Col md={3}>
-                <img src='/img/tubing.png' alt="Placeholder for tubing image" />
+                <img src='/img/tubing.png' alt="Placeholder" />
               </Col>
               <Col md={8} lg={9}>
                 <Card>

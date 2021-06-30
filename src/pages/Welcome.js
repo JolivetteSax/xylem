@@ -20,6 +20,8 @@ export default class Welcome extends Component {
                 <h2 style={{ fontSize: '48px', fontWeight: '700' }}>
                   Welcome to Xylem
                 </h2>
+                Beta version 1.0 (June 30, 2021)<br/>
+
                 <br />
                 <p>
                   The Xylem project is funded in partnership with Future Generations University

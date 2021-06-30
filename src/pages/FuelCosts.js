@@ -32,6 +32,26 @@ export default class FuelCosts extends React.Component {
       pricePerLPGal: 1.42,
       pricePerKWH: .08,
 
+      //Btu's per gallon of water evaporated 					 9,396
+      //Btu's per gallon of water frozen					 1,187
+      btuPerGallonEvap: 9396,
+      btuPerGallonFrozen: 1187,
+
+      //kWh/gallon of water removed
+      kwhPerGalRO: 0.012,
+      kwhPerGalVac: 0.12,
+      kwhPerGalVaporComp: .110,
+      kwhPerGalFreeze: .245,
+      kwhPerGalMicro: .9,
+
+      woodEfficiency: .40,
+      coalEfficiency: .40,
+      oilEfficiency: .75,
+      gasEfficiency: .75,
+      archEfficiency: .65,
+      preheaterEfficiency: .15,
+      steamAwayEfficiency: .65, 
+      electricEfficiency: 1, // XXX - i think?
     }
   }
 
@@ -71,12 +91,39 @@ export default class FuelCosts extends React.Component {
 
     const mBTUWood = this.state.pricePerCord / (23000000 / 1000000); //=(F22/(C22/1000000))
     const mBTUCoal = this.state.pricePerTonCoal / (24000000 / 1000000) ; // =F23/(C23/1000000)
-    const mBTUOil =  (1000000/138000) * this.state.pricePerGalOil ; //=(1000000/C24)*F24
-    const mBTUGas = (1000000/100000) * this.state.pricePerTherm ; //=(1000000/C25)*F25
+    const mBTUOil =  (1000000 / 138000) * this.state.pricePerGalOil ; //=(1000000/C24)*F24
+    const mBTUGas = (1000000 / 100000) * this.state.pricePerTherm ; //=(1000000/C25)*F25
     const mBTULP = (1000000 / 93000) * this.state.pricePerLPGal ;  //=(1000000/C26)*F26
     const mBTUElec =  (1000000 / 3412) * this.state.pricePerKWH ; //=(1000000/C27)*F27
 
     const syrupGallons = this.state.sapGallons / (86 / this.state.brix); // =E10/(86/E7);
+
+    /* Open Pan calculations 
+       These compute cost per gallon water removed
+       =(             F29/  C22         ) * (       F22 / G14)
+       ( btuPerGallonEvap / magicNumber ) * (unit price / efficiency)
+       the cost pergallon of syrup and total cost can calculate in a loop since they are all the same
+       cost per gal of syrup =((86/ brix )-1) * ( cost per gallon water removed )
+    */
+    const base = {
+      Wood: (this.state.btuPerGallonEvap / 23000000) * (this.state.pricePerCord / this.state.woodEfficiency),  
+      Coal: (this.state.btuPerGallonEvap / 24000000) * (this.state.pricePerTonCoal / this.state.coalEfficiency),
+      "Fuel Oil": (this.state.btuPerGallonEvap / 138000) * (this.state.pricePerGalOil / this.state.oilEfficiency),  
+      "Natural Gas": (this.state.btuPerGallonEvap / 100000) * (this.state.pricePerTherm / this.state.gasEfficiency),
+      "LP Gas": (this.state.btuPerGallonEvap / 93000 ) * (this.state.pricePerLPGal / this.state.gasEfficiency ),
+      "Wood (air-tight arch)": (this.state.btuPerGallonEvap / 23000000 ) * (this.state.pricePerCord / this.state.archEfficiency), 
+      "Coal (air-tight arch)": (this.state.btuPerGallonEvap / 24000000 ) * (this.state.pricePerTonCoal / this.state.archEfficiency), 
+      "Electricity": (this.state.btuPerGallonEvap / 3412 ) * (this.state.pricePerKWH / this.state.electricEfficiency), 
+    }
+
+    //
+    const openPan = {
+       base, 
+    }
+
+    const descriptions = {
+      base: "Base"
+    }
 
     return (
       <div>
@@ -85,7 +132,7 @@ export default class FuelCosts extends React.Component {
           <Container style={{ width: "100%", marginTop: '5px' }}>
             <Row>
               <Col md={3}>
-                <img src='/img/tubing.png' alt="Placeholder for tubing image" />
+                <img src='/img/tubing.png' alt="Placeholder" />
               </Col>
               <Col md={8} lg={9}>
                 <Card>
@@ -235,6 +282,38 @@ export default class FuelCosts extends React.Component {
                               </Col>
                             </Row>
                           </Card>
+
+
+                        {Object.keys(openPan).map((key) => 
+                          <Card style={{marginTop:'10px'}}>
+                          <Card.Header>Open Pan Evaporation {descriptions[key]}</Card.Header>
+                          <Row>
+                            <Col>
+                              <Table bordered hover>
+                                <thead>
+                                <tr>
+                                  <th>Fuel</th>
+                                  <th>Cost per gallon of water removed</th>
+                                  <th>Cost per gallon of Syrup</th>
+                                  <th>Total Cost</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                  {Object.keys(openPan[key]).map((fuel) => 
+                                    <tr>
+                                      <td>{fuel}</td>
+                                      <td>${openPan[key][fuel].toFixed(3)}</td>
+                                      <td>${(((86 / this.state.brix) - 1 )*openPan[key][fuel]).toFixed(2)}</td> {/** =((86/E7)-1)*E78*/}
+                                      <td>${(((86 / this.state.brix) - 1 )*openPan[key][fuel] * syrupGallons).toFixed(2)}</td> {/** times sap */}
+                                    </tr>
+                                  )}
+                                </tbody>
+                              </Table>
+                            </Col>
+                          </Row>
+                        </Card>
+
+                        )}
 
 
                         </Col>

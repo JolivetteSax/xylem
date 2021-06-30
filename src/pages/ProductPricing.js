@@ -1,7 +1,7 @@
 import React from 'react';
 import '../stylesheets/App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Container, Row, Col, Card, Form, Table, Dropdown } from 'react-bootstrap';
+import { Container, Row, Col, Card, Form, Table } from 'react-bootstrap';
 import Header from '../components/generic/Header';
 
 export default class ProductPricing extends React.Component {
@@ -27,7 +27,7 @@ export default class ProductPricing extends React.Component {
           <Container style={{ width: "100%", marginTop: '5px' }}>
             <Row>
               <Col md={3}>
-                <img src='/img/tubing.png' alt="Placeholder for tubing image" />
+                <img src='/img/tubing.png' alt="Placeholder" />
               </Col>
               <Col md={8} lg={9}>
                 <Card>
