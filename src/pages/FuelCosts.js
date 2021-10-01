@@ -142,7 +142,7 @@ export default class FuelCosts extends React.Component {
                     <Row>
                       <Col>
                       <Card>
-                            <Card.Header>Inputs</Card.Header>
+                            <Card.Header>Sap Inputs</Card.Header>
                       
                         <Form style={{ textAlign: 'left' }} onSubmit={event => event.preventDefault()}>
                           <Col>
