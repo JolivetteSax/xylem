@@ -50,6 +50,7 @@ export default class SapPricing extends React.Component {
                           <Form.Group controlId="formTapCount">
                             <Form.Label>Percent Bulk Sap</Form.Label>
                             <Form.Control type="text" onChange={this.handlePercent} value={this.state.percentBulk} />
+                              <Row>
                             <Form.Text className="text-muted">
                             </Form.Text>
                           </Form.Group>
